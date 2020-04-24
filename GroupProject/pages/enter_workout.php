@@ -63,7 +63,7 @@
           <option value="Vigorous">Vigorous</option>
         </select>
       <label>Duration</label>
-        <input type="number" name="user_weight" step="1" value="" title="Enter Exercise Duration in minutes" required>
+        <input type="number" name="duration" step="1" value="" title="Enter Exercise Duration in minutes" required>
       <input type="submit" name="enter_workout_submit" value="Enter Workout">
     </form>
 

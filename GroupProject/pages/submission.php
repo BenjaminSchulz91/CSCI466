@@ -31,11 +31,20 @@
 
     <?php
     if($connected){
+      //Enter New workout
+      if(isset($_POST['enter_workout_submit'])){
+        $addWorkout= $pdo->prepare('INSERT INTO Workout (user_ID, type, duration, intensity) VALUES (?, ?, ?, ?);');
+        $addWorkout->execute(array($_POST["user_ID"], $_POST["type"], $_POST["duration"], $_POST["intensity"]));
+
+        echo "<p>Successfully added workout</p>";
+      }
+
+      // View Workout History
       if(isset($_POST['workout_history_submit'])){
         $user = $_POST["user_ID"];
         $from = date("Y-m-d", strtotime($_POST["from_date"]));
         $to = date("Y-m-d", strtotime($_POST["to_date"]));
-        $rs = $pdo->query("SELECT * FROM Workout WHERE user_ID = $user AND (date_completed BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 00:00:00' as DATETIME));");
+        $rs = $pdo->query("SELECT * FROM Workout WHERE user_ID = $user AND (date_completed BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 23:59:59' as DATETIME));");
         $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<table border=1 cellspaces=1>";
@@ -46,11 +55,20 @@
         echo "</table>";
       }
 
+      // Update Weight
+      if(isset($_POST['update_weight_submit'])){
+        $addWeight= $pdo->prepare('INSERT INTO Weight (user_ID, user_weight) VALUES (?, ?);');
+        $addWeight->execute(array($_POST["user_ID"], $_POST["user_weight"]));
+
+        echo "<p>Successfully updated weight</p>";
+      }
+
+      // View Weight History
       if(isset($_POST['weight_history_submit'])){
         $user = $_POST["user_ID"];
         $from = date("Y-m-d", strtotime($_POST["from_date"]));
         $to = date("Y-m-d", strtotime($_POST["to_date"]));
-        $rs = $pdo->query("SELECT * FROM Weight WHERE user_ID = $user AND (date_logged BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 00:00:00' as DATETIME));");
+        $rs = $pdo->query("SELECT * FROM Weight WHERE user_ID = $user AND (date_logged BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 23:59:59' as DATETIME));");
         $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<table border=1 cellspaces=1>";
@@ -61,11 +79,20 @@
         echo "</table>";
       }
 
+      // Add Meal Item
+      if(isset($_POST['enter_meal_item_submit'])){
+        $addMealItem= $pdo->prepare('INSERT INTO Eats (user_ID, item_name, num_of_servings) VALUES (?, ?, ?);');
+        $addMealItem->execute(array($_POST["user_ID"], $_POST["item_name"], $_POST["num_of_servings"]));
+
+        echo "<p>Successfully added meal item</p>";
+      }
+
+      // View Meal History
       if(isset($_POST['meal_history_submit'])){
         $user = $_POST["user_ID"];
         $from = date("Y-m-d", strtotime($_POST["from_date"]));
         $to = date("Y-m-d", strtotime($_POST["to_date"]));
-        $rs = $pdo->query("SELECT * FROM Eats WHERE user_ID = $user AND (date_consumed BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 00:00:00' as DATETIME));");
+        $rs = $pdo->query("SELECT * FROM Eats WHERE user_ID = $user AND (date_consumed BETWEEN CAST('$from  00:00:00' as DATETIME) AND CAST('$to 23:59:59' as DATETIME));");
         $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<table border=1 cellspaces=1>";
@@ -74,6 +101,14 @@
           echo "<tr><td>" . $row["user_ID"] . "</td><td>" . $row["item_name"] . "</td><td>" . $row["num_of_servings"] . "</td><td>" . $row["date_consumed"] . "</td></tr>\n";
         }
         echo "</table>";
+      }
+      // New user
+      if(isset($_POST['new_user_submit'])){
+        $user = $_POST["name"];
+        $addUser= $pdo->prepare('INSERT INTO User (name) VALUES (?);');
+        $addUser->execute(array($user));
+
+        echo "<p>Added '" . $user . "'  to User database</p>";
       }
     }
     ?>

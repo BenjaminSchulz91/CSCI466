@@ -121,12 +121,12 @@ body{
     }
 
     form{
-      background: #F1F1F1;
+      background: #FAFAFA;
       text-align: left;
       width: 80%;
       margin: auto;
       padding: 0.5% 2% 1.5% 2%;
-      border: solid 1px #DDD;
+      border: solid 1px #EEE;
     }
 
       form label{

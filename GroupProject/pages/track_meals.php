@@ -44,7 +44,7 @@
           ?>
         </select>
       <label>Food/Drink</label>
-        <select name="type" class="data">
+        <select name="item_name" class="data">
           <?php
           if($connected){
             $rs = $pdo->query("SELECT * FROM FoodBeverage;");

@@ -17,7 +17,7 @@
 
     <form action="submission.php" method="POST">
       <label>Name</label>
-        <input type="text" name="name" value="" title="Enter Name" pattern="[A-Za-z]" required>
+        <input type="text" name="name" value="" title="Enter a name between 3 and 50 characters long" pattern="[A-Za-z]{3,50}" required>
       <input type="submit" name="new_user_submit" value="Sign Up">
     </form>
 
