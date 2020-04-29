@@ -13,7 +13,7 @@
   $username = 'z1799041';
   $connected = false;
   try { // if something goes wrong, an exception is thrown
-    $dsn = "mysql:host=courses;dbname=test";
+    $dsn = "mysql:host=courses;dbname=z1799041";
     $pdo = new PDO($dsn, $username, $password);
     $connected = true;
   }
@@ -35,13 +35,15 @@
     <form action="submission.php" method="POST">
       <label>Food/Drink Name</label>
         <input type="text" name="item_name" value="" required>
-      <label>Serving size</label>
-        <input type="number" name="serving_size" value="" required title="How large a serving is">
+      <label>One Serving Size</label>
+        <input type="number" name="serving_size" value="" step="0.1" title="How large a single serving is" required>
         <select name="units" class="units">
           <option value="grams">grams (g)</option>
           <option value="milligrams">milligrams (mg)</option>
+          <option value="micrograms">micrograms (&#181;g)</option>
           <option value="ounces">ounces (oz)</option>
-          <option value="grams">pounds (lbs)</option>
+          <option value="pounds">pounds (lbs)</option>
+          <option value="cups">cups (c)</option>
         </select>
       <label>Calories per Serving</label>
         <input type="number" name="calories" value="" title="Number of calories per serving" required>
@@ -77,12 +79,14 @@
           ?>
         </select>
       <label for="">Amount</label>
-        <input type="number" step="1" name="nutrient_amount" value="" title="How many servings that were had" required>
+        <input type="number" step="1" name="nutrient_amount" value="" title="How much of the nutrient is present in a single serving" required>
         <select name="units" class="units">
           <option value="grams">grams (g)</option>
           <option value="milligrams">milligrams (mg)</option>
+          <option value="micrograms">micrograms (&#181;g)</option>
           <option value="ounces">ounces (oz)</option>
           <option value="grams">pounds (lbs)</option>
+          <option value="cups">cups (c)</option>
         </select>
         <input type="submit" name="nutritional_info_submit" value="Add Info">
     </form>

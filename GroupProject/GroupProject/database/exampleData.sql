@@ -1,4 +1,4 @@
-/*
+
 INSERT INTO User (user_ID, name) VALUES
     (101112, 'Miles'),
     (107624, 'Carl'),
@@ -9,7 +9,6 @@ INSERT INTO User (user_ID, name) VALUES
     (122899, 'Ava'),
     (104011, 'Sarah');
 
-*/
 INSERT INTO Weight (date_logged, user_ID, user_weight) VALUES
     ("2020-01-05 04:27:51", 101112, 195),
     ("2020-02-26 19:34:07", 101112, 195),
@@ -50,7 +49,7 @@ INSERT INTO Workout (date_completed, user_ID, type, duration, intensity) VALUES
     ("2020-01-01 04:41:57", 101112, "Squats", 26, "Moderate"),
     ("2020-01-20 09:03:55", 101112, "Treadmill", 23, "Moderate"),
     ("2020-02-02 17:55:42", 101112, "Squats", 32, "Light"),
-    ("2020-03-03 19:32:36", 101112, "Calf Raises", 22, "Moderate"),
+    ("2020-03-03 19:32:36", 101112, "Calf-Raises", 22, "Moderate"),
     ("2020-01-04 14:39:09", 107624, "Treadmill", 35, "Light"),
     ("2020-01-08 09:29:43", 113474, "Treadmill", 12, "Vigorous"),
     ("2020-02-22 11:17:06", 113474, "Bench-Press", 15, "Vigorous"),
@@ -67,25 +66,24 @@ INSERT INTO Workout (date_completed, user_ID, type, duration, intensity) VALUES
     ("2020-02-03 06:28:18", 155972, "Squats", 25, "Vigorous"),
     ("2020-03-09 18:44:22", 155972, "Pushups", 21, "Vigorous"),
     ("2020-01-21 00:16:42", 122899, "Deadlifts", 29, "Moderate"),
-    ("2020-01-24 14:39:21", 122899, "Power Cleans", 11, "Vigorous"),
+    ("2020-01-24 14:39:21", 122899, "Power-Cleans", 11, "Vigorous"),
     ("2020-02-07 20:24:39", 122899, "Curls", 26, "Moderate"),
     ("2020-03-13 20:48:53", 122899, "Bicycle", 27, "Moderate"),
     ("2020-04-05 00:07:37", 122899, "Squats", 23, "Light"),
     ("2020-01-23 14:51:27", 104011, "Treadmill", 20, "Light");
-/*
 
 INSERT INTO FoodBeverage (item_name, serving_size, calories) VALUES
-    ("Apple", 76, 72),
-    ("Rice, White", 196, 205),
-    ("Coca-Cola", 394, 136),
-    ("Spaghetti", 200, 221),
-    ("Chicken Breast", 114, 142),
-    ("Ground Beef", 114, 193),
-    ("Beer", 340, 153),
-    ("Pizza", 170, 298),
-    ("Doughnut", 28, 289),
-    ("Carrots", 70, 52);
-*/
+    ("Apple", 76000.0, 72),
+    ("Rice, White", 196000.0, 205),
+    ("Coca-Cola", 394000.0, 136),
+    ("Spaghetti", 200000.0, 221),
+    ("Chicken Breast", 114000.0, 142),
+    ("Ground Beef", 114000.0, 193),
+    ("Beer", 340000.0, 153),
+    ("Pizza", 170000.0, 298),
+    ("Doughnut", 28000.0, 289),
+    ("Carrots", 70000.0, 52);
+
 INSERT INTO Eats (date_consumed, user_ID, item_name, num_of_servings) VALUES
     ("2020-01-01 04:41:57", 101112, "Apple", 1),
     ("2020-01-08 09:29:43", 122899, "Rice, White", 2),
@@ -94,7 +92,7 @@ INSERT INTO Eats (date_consumed, user_ID, item_name, num_of_servings) VALUES
     ("2020-01-23 14:51:27", 107624, "Pizza", 4),
     ("2020-02-03 06:28:18", 131123, "Spaghetti", 1),
     ("2020-02-07 20:24:39", 104011, "Chicken Breast", 1);
-/*
+
 INSERT INTO Nutrients (nutrient_name, recommended_daily, macro_micro) VALUES
     ("Protein", 54000.0, "Macro"),
     ("Fat", 46000.0, "Macro"),
@@ -103,8 +101,8 @@ INSERT INTO Nutrients (nutrient_name, recommended_daily, macro_micro) VALUES
     ("Cholesterol", 300.0, "Macro"),
     ("Sodium", 2300.0, "Macro"),
     ("Iron", 18.0, "Micro"),
-    ("Calcium", 1300.0, "Macro"),
-    ("Potassium", 4700.0, "Macro"),
+    ("Calcium", 1300.0, "Micro"),
+    ("Potassium", 4700.0, "Micro"),
     ("Caffeine", 0.0, "Micro"),
     ("Magnesium", 420.0, "Micro"),
     ("Zinc", 12.0, "Micro"),
@@ -115,23 +113,72 @@ INSERT INTO Nutrients (nutrient_name, recommended_daily, macro_micro) VALUES
     ("Vitamin E", 15.0, "Micro");
 
 INSERT INTO NutritionalInfo (nutrient_name, item_name, nutrient_amount) VALUES
+
     ("Protein", "Chicken Breast", 43000),
     ("Fat", "Chicken Breast", 5000),
+    ("Sugars", "Chicken Breast", 0),
+    ("Fiber", "Chicken Breast", 0),
+    ("Cholesterol", "Chicken Breast", 146),
+    ("Sodium", "Chicken Breast", 128),
+
     ("Fat", "Apple", 0),
     ("Cholesterol", "Apple", 0),
     ("Fiber", "Apple", 4000),
     ("Sugars", "Apple", 19000),
     ("Protein", "Apple", 0),
+
     ("Fat", "Rice, White", 900),
     ("Cholesterol", "Rice, White", 0),
     ("Fiber", "Rice, White", 900),
     ("Iron", "Rice, White", 1.44),
     ("Zinc", "Rice, White", 0.24),
     ("Protein", "Rice, White", 2900),
+
     ("Fat", "Coca-cola", 0),
     ("Sodium", "Coca-cola", 45),
     ("Sugars", "Coca-cola", 39000),
     ("Cholesterol", "Coca-cola", 0),
     ("Protein", "Coca-cola", 0),
-    ("Caffeine", "Coca-cola", 39);
-*/
+    ("Caffeine", "Coca-cola", 39),
+
+    ("Protein", "Pizza", 13300),
+    ("Fat", "Pizza", 12100),
+    ("Sugars", "Pizza", 4100),
+    ("Fiber", "Pizza", 1600),
+    ("Cholesterol", "Pizza", 29),
+    ("Sodium", "Pizza", 683),
+
+    ("Protein", "Spaghetti", 7800),
+    ("Fat", "Spaghetti", 1200),
+    ("Sugars", "Spaghetti", 4100),
+    ("Fiber", "Spaghetti", 2400),
+    ("Cholesterol", "Spaghetti", 0),
+    ("Sodium", "Spaghetti", 1),
+
+    ("Protein", "Ground Beef", 30500),
+    ("Fat", "Ground Beef", 7500),
+    ("Sugars", "Ground Beef", 0),
+    ("Fiber", "Ground Beef", 0),
+    ("Cholesterol", "Ground Beef", 101),
+    ("Sodium", "Ground Beef", 103),
+
+    ("Protein", "Doughnut", 4000),
+    ("Fat", "Doughnut", 11000),
+    ("Sugars", "Doughnut", 13000),
+    ("Fiber", "Doughnut", 1000),
+    ("Cholesterol", "Doughnut", 0),
+    ("Sodium", "Doughnut", 270),
+
+    ("Protein", "Beer", 1600),
+    ("Fat", "Beer", 0),
+    ("Sugars", "Beer", 0),
+    ("Fiber", "Beer", 0),
+    ("Cholesterol", "Beer", 0),
+    ("Sodium", "Beer", 14),
+
+    ("Protein", "Carrots", 13300),
+    ("Fat", "Carrots", 12100),
+    ("Sugars", "Carrots", 4100),
+    ("Fiber", "Carrots", 1600),
+    ("Cholesterol", "Carrots", 29),
+    ("Sodium", "Carrots", 683);
