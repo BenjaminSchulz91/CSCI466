@@ -69,6 +69,61 @@
       return $value;
     }
 
+    // function to calculate how many calories are burned per workout
+    function caloriesFromWorkout($workout, $intensity, $time){
+      switch($intensity){
+        case "Light":
+          $mul = 0.85;
+        break;
+        case "Moderate":
+          $mul = 1;
+        break;
+        case "Vigorous":
+          $mul = 1.15;
+        break;
+        default:
+          $mul = 1;
+      }
+
+      switch($workout){
+        case "Bench-Press":
+          $cpm = 4;
+        break;
+        case "Bicycle":
+          $cpm = 7.5;
+        break;
+        case "Calf-Raises":
+          $cpm = 3;
+        break;
+        case "Curls":
+          $cpm = 3;
+        break;
+        case "Deadlifts":
+            $cpm = 6;
+        break;
+        case "Planks":
+          $cpm = 7;
+        break;
+        case "Power-Cleans":
+          $cpm = 8;
+        break;
+        case "Pushups":
+          $cpm = 6.5;
+        break;
+        case "Squats":
+          $cpm = 7;
+        break;
+        case "Treadmill":
+          $cpm = 10;
+        break;
+        default:
+          $cpm = 10;
+      }
+
+      return ($mul * $cpm * $time);
+    }
+
+    // if connected to database
     if($connected){
       //Enter New workout
       if(isset($_POST['enter_workout_submit'])){
@@ -78,7 +133,7 @@
         echo "<p>Successfully added workout</p><p>Page will redirect in 3 seconds</p>";
         ?>
           <script>
-            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/enter_workout.php';},3000); // 5 seconds
+            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/enter_workout.php';},3000); // 3 seconds
           </script>
         <?php
       }
@@ -95,13 +150,22 @@
         echo "<table border=1 cellspaces=1 id=\"myTable\">";
         echo "<tr>
                 <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(2)')\">Type</th>
-                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(3)')\">Intensity</th><th>Duration</th>
-                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(4)')\">Date</th>
+                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(3)')\">Intensity</th>
+                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(4)')\">Duration</th>
+                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(5)')\">Calories Burned</th>
+                <th onclick=\"w3.sortHTML('#myTable','.item', 'td:nth-child(6)')\">Date</th>
               </tr>\n";
+
+        $totalCalories = 0;
         foreach ($rows as $row) {
-          echo "<tr class=\"item\"><td>" . $row["type"] . "</td><td>" . $row["intensity"] . "</td><td>" . $row["duration"] . "</td><td>" . $row["date_completed"] . "</td></tr>\n";
+          $caloriesBurned = caloriesFromWorkout( $row["type"], $row["intensity"], $row["duration"]);
+          $totalCalories += $caloriesBurned;
+          echo "<tr class=\"item\"><td>" . $row["type"] . "</td><td>" . $row["intensity"] . "</td><td>" . $row["duration"] . "</td><td>" . $caloriesBurned . "</td><td>" . $row["date_completed"] . "</td></tr>\n";
         }
         echo "</table>";
+
+        echo "<h4>Total Calories Burned During Period</h4>";
+        echo "<table border=1 cellspaces=1><tr><th>Total Calories Burned</th></tr><tr><td>" . $totalCalories . "</td</tr></table>";
       }
 
       // Update Weight
@@ -140,7 +204,7 @@
         echo "<p>Successfully added meal item</p><p>Page will redirect in 3 seconds</p>";
         ?>
           <script>
-            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/track_meals.php';},3000); // 5 seconds
+            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/track_meals.php';},3000); // 3 seconds
           </script>
         <?php
       }
@@ -226,7 +290,7 @@
         echo "<p>Added '" . $user . "'  to User database</p><p>Page will redirect in 3 seconds</p>";
         ?>
           <script>
-            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/index.html';},3000); // 5 seconds
+            setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/index.html';},3000); // 3 seconds
           </script>
         <?php
 
@@ -242,7 +306,7 @@
           echo "<p>Added '" . $item_name . "'  to FoodBeverage database</p>";
           ?>
             <script>
-              setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/food&drink.php';},3000); // 5 seconds
+              setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/food&drink.php';},3000); // 3 seconds
             </script>
           <?php
         }
@@ -258,7 +322,7 @@
           echo "<p>Added '" . $nutrient_name . " contained in " . $item_name . "'  to NutritionalInfo database</p><p>Page will redirect in 3 seconds</p>";
           ?>
             <script>
-              setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/food&drink.php';},3000); // 5 seconds
+              setTimeout(function (){window.location.href= 'http://students.cs.niu.edu/~z1799041/GroupProject/pages/food&drink.php';},3000); // 3 seconds
             </script>
           <?php
         }

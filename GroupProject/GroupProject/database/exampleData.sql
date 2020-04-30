@@ -55,7 +55,7 @@ INSERT INTO Workout (date_completed, user_ID, type, duration, intensity) VALUES
     ("2020-02-22 11:17:06", 113474, "Bench-Press", 15, "Vigorous"),
     ("2020-03-07 11:48:48", 113474, "Squats", 26, "Moderate"),
     ("2020-03-16 06:28:59", 113474, "Bicycle", 38, "Light"),
-    ("2020-01-14 00:35:03", 144818, "Calf Raises", 18, "Vigorous"),
+    ("2020-01-14 00:35:03", 144818, "Calf-Raises", 18, "Vigorous"),
     ("2020-02-25 14:23:29", 144818, "Pushups", 23, "Moderate"),
     ("2020-03-05 06:58:16", 144818, "Treadmills", 11, "Vigorous"),
     ("2020-03-19 09:43:23", 144818, "Pushups", 27, "Moderate"),
